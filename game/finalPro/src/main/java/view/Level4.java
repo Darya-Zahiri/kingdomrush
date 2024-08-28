@@ -23,6 +23,7 @@ import model.*;
 
 import javax.print.attribute.standard.Media;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Level4 implements Runnable{
@@ -37,6 +38,8 @@ public class Level4 implements Runnable{
     private ImageView home;
     @FXML
     private ImageView imageView;
+    @FXML
+    private ImageView backPack;
     @FXML
     private ImageView tower1;
     @FXML
@@ -118,7 +121,7 @@ public class Level4 implements Runnable{
     @FXML
     private ImageView attack;
 
-
+    private Image backPackI=new Image("C:\\Users\\zam zam\\Pictures\\Saved Pictures\\backpack.png");
     private Image map4=new Image("C:\\Users\\zam zam\\Pictures\\Saved Pictures\\map3.png");
     private Image homeI=new Image("C:\\Users\\zam zam\\Pictures\\Saved Pictures\\home.png");
     private Image towerI=new Image("C:\\Users\\zam zam\\Pictures\\Saved Pictures\\towerplace.png");
@@ -127,7 +130,7 @@ public class Level4 implements Runnable{
     private Image upgrade=new Image("C:\\Users\\zam zam\\Pictures\\Saved Pictures\\upgrade.png");
     private Image attackI=new Image("C:\\Users\\zam zam\\Pictures\\Saved Pictures\\start1.png");
 
-    Map level4=new Map(300,10,0);
+    Map level4=new Map(300,20,0);
     Wave currentWave=new Wave();
     public int waveCount=0;
     public void initialize(){
@@ -146,6 +149,7 @@ public class Level4 implements Runnable{
         tower5.setImage(towerI);
         home.setImage(homeI);
         imageView.setImage(map4);
+        backPack.setImage(backPackI);
         Thread thread = new Thread(this);
         thread.start();
     }
@@ -306,6 +310,41 @@ public class Level4 implements Runnable{
             //ring1.setLayoutY(40);
         }
     }
+    public void upgradeT1(){
+        towers.get(0).upgrade(level4);
+    }
+    public void destroyT1(){
+        towers.get(0).destroy(level4);
+        tower1.setImage(towerI);
+    }
+    public void upgradeT2(){
+        towers.get(1).upgrade(level4);
+    }
+    public void destroyT2(){
+        towers.get(1).destroy(level4);
+        tower1.setImage(towerI);
+    }
+    public void upgradeT3(){
+        towers.get(2).upgrade(level4);
+    }
+    public void destroyT3(){
+        towers.get(2).destroy(level4);
+        tower1.setImage(towerI);
+    }
+    public void upgradeT4(){
+        towers.get(3).upgrade(level4);
+    }
+    public void destroyT4(){
+        towers.get(3).destroy(level4);
+        tower1.setImage(towerI);
+    }
+    public void upgradeT5(){
+        towers.get(4).upgrade(level4);
+    }
+    public void destroyT5(){
+        towers.get(4).destroy(level4);
+        tower1.setImage(towerI);
+    }
     public void setArcher1B(){
         disable();
         Archer archer=new Archer();
@@ -321,7 +360,7 @@ public class Level4 implements Runnable{
     public void setBarracks1B(){
         disable();
         Barracks barracks=new Barracks();
-        //tower1.setImage(barracks.getImag());
+        tower1.setImage(barracks.getImag());
         //tower1.setLayoutX(155);
         barracks.setX((int) (tower1.getLayoutX()+65));
         barracks.setY((int) (tower1.getLayoutY()+32));
@@ -334,7 +373,7 @@ public class Level4 implements Runnable{
     public void setMages1B(){
         disable();
         Mages mages=new Mages();
-        //tower1.setImage(mages.getImag());
+        tower1.setImage(mages.getImag());
         //tower1.setLayoutX(155);
         mages.setX((int) (tower1.getLayoutX()+65));
         mages.setY((int) (tower1.getLayoutY()+32));
@@ -347,7 +386,7 @@ public class Level4 implements Runnable{
     public void setArtillery1B(){
         disable();
         Artillery artillery=new Artillery();
-        //tower1.setImage(artillery.getImag());
+        tower1.setImage(artillery.getImag());
         //tower1.setLayoutX(155);
         artillery.setX((int) (tower1.getLayoutX()+65));
         artillery.setY((int) (tower1.getLayoutY()+32));
@@ -362,7 +401,7 @@ public class Level4 implements Runnable{
     public void setArcher2B(){
         disable();
         Archer archer=new Archer();
-        //tower2.setImage(archer.getImag());
+        tower2.setImage(archer.getImag());
         //tower2.setLayoutX(225);
         archer.setX((int) (tower2.getLayoutX()+65));
         archer.setY((int) (tower2.getLayoutY()+32));
@@ -623,6 +662,7 @@ public class Level4 implements Runnable{
         while(live){
             try{
                 checklife();
+                checkWin();
                 Platform.runLater(()->{
                     settingImage();
                     checkBoard();
@@ -631,8 +671,8 @@ public class Level4 implements Runnable{
                             entry.shut(currentWave);}
                     });
                     currentWave.raiders.forEach(entry -> {
-                        //System.out.println("x="+entry.getImageView().getTranslateX());
-                        //System.out.println("y="+entry.getImageView().getTranslateY());
+                        System.out.println("x="+entry.getImageView().getTranslateX());
+                        System.out.println("y="+entry.getImageView().getTranslateY());
                         entry.setX((int)(entry.getImageView().getLayoutX()+entry.getImageView().getTranslateX()+50));
                         entry.setY((int) (entry.getImageView().getLayoutY()+entry.getImageView().getTranslateY()+50));
                     });
@@ -672,14 +712,30 @@ public class Level4 implements Runnable{
         });
     }
     public void checkend(){
-        for (int j=0;j<currentWave.raiders.size();j++){
-            if (currentWave.raiders.get(j).getImageView().getTranslateX()>149){
-                if (currentWave.raiders.get(j).getImageView().getTranslateY()>198) {
-                    if (currentWave.raiders.get(j).status){
-                        int life=level4.getLife();
-                        life--;
-                        level4.setLife(life);
-                        currentWave.raiders.get(j).status=false;
+        if ((waveCount==2)||(waveCount==4)){
+            for (int j=0;j<currentWave.raiders.size();j++){
+                if (currentWave.raiders.get(j).getImageView().getTranslateX()<-269){
+                    if (currentWave.raiders.get(j).getImageView().getTranslateY()==260.0) {
+                        if (currentWave.raiders.get(j).status){
+                            int life=level4.getLife();
+                            life--;
+                            level4.setLife(life);
+                            currentWave.raiders.get(j).status=false;
+                        }
+                    }
+                }
+            }
+
+        }else {
+            for (int j=0;j<currentWave.raiders.size();j++){
+                if (currentWave.raiders.get(j).getImageView().getTranslateX()>189){
+                    if (currentWave.raiders.get(j).getImageView().getTranslateY()==290.0) {
+                        if (currentWave.raiders.get(j).status){
+                            int life=level4.getLife();
+                            life--;
+                            level4.setLife(life);
+                            currentWave.raiders.get(j).status=false;
+                        }
                     }
                 }
             }
@@ -702,6 +758,69 @@ public class Level4 implements Runnable{
                 }
             });
 
+        }
+    }
+    public void checkWin(){
+        boolean check=false;
+        if (level4.getLife()!=0){
+            if (waveCount==5){
+                for (int j=0;j<currentWave.raiders.size();j++){
+                    if (currentWave.raiders.get(j).getImageView().getTranslateX()>189){
+                        if (currentWave.raiders.get(j).getImageView().getTranslateY()==290.0) {
+                            check=true;
+                        }else {
+                            check=false;
+                            break;
+                        }
+                    }else {
+                        check=false;
+                        break;
+                    }
+                }
+                if (check){
+                    live = false;
+                    Platform.runLater(()->{
+                        try {
+                            Parent root = FXMLLoader.load(HelloApplication.class.getResource("/view/win.fxml"));
+                            Stage stage = new Stage();
+                            Scene scene = new Scene(root);
+                            stage.setScene(scene);
+                            stage.setAlwaysOnTop(true);
+                            stage.show();
+                        }catch (Exception e){
+                            System.out.println("error");
+                        }
+                    });
+                }
+            }
+        }
+    }
+    public void buyCoin() throws SQLException {
+        if (Player.getPlayer().coinSpell>0){
+            Coin.dropMap(level4);
+            Player.getPlayer().coinSpell--;
+            int result= Session.database.executeQueryWithoutResult("UPDATE player SET  coinSpell = '" +Player.getPlayer().coinSpell+ "'  WHERE id = " +Player.getPlayer().getId()+ ";");
+        }
+    }
+    public void buyHeal() throws SQLException {
+        if (Player.getPlayer().healSpell>0){
+            Heal.dropMap(level4);
+            Player.getPlayer().healSpell--;
+            int result= Session.database.executeQueryWithoutResult("UPDATE player SET  healSpell = '" +Player.getPlayer().healSpell+ "'  WHERE id = " +Player.getPlayer().getId()+ ";");
+        }
+    }
+    public void buyLittle() throws SQLException {
+        if (Player.getPlayer().littleSpell>0){
+            LittleBoy.dropWave(currentWave);
+            Player.getPlayer().littleSpell--;
+            int result= Session.database.executeQueryWithoutResult("UPDATE player SET  littleSpell = '" +Player.getPlayer().littleSpell+ "'  WHERE id = " +Player.getPlayer().getId()+ ";");
+        }
+    }
+    public void buyFreeze() throws SQLException {
+        if (Player.getPlayer().freezeSpell>0){
+            Freeze.dropMap(level4);
+            Player.getPlayer().freezeSpell--;
+            int result= Session.database.executeQueryWithoutResult("UPDATE player SET  freezeSpell = '" +Player.getPlayer().freezeSpell+ "'  WHERE id = " +Player.getPlayer().getId()+ ";");
         }
     }
 }

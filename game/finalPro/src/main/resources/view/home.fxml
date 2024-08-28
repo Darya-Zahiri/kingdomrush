@@ -85,8 +85,8 @@
          </image>
       </ImageView>
       <Button fx:id="level1" layoutX="68.0" layoutY="253.0" mnemonicParsing="false" onAction="#setLevel1" opacity="0.0" prefHeight="63.0" prefWidth="52.0" />
-      <Button fx:id="level4" layoutX="395.0" layoutY="103.0" mnemonicParsing="false" opacity="0.0" prefHeight="63.0" prefWidth="52.0" />
-      <Button fx:id="level3" layoutX="307.0" layoutY="211.0" mnemonicParsing="false" opacity="0.0" prefHeight="63.0" prefWidth="52.0" />
+      <Button fx:id="level4" layoutX="395.0" layoutY="103.0" mnemonicParsing="false" onAction="#setLevel4" opacity="0.0" prefHeight="63.0" prefWidth="52.0" />
+      <Button fx:id="level3" layoutX="307.0" layoutY="211.0" mnemonicParsing="false" onAction="#setLevel3" opacity="0.0" prefHeight="63.0" prefWidth="52.0" />
       <Button fx:id="level2" layoutX="169.0" layoutY="157.0" mnemonicParsing="false" onAction="#setLevel2" opacity="0.0" prefHeight="63.0" prefWidth="52.0" />
       <ImageView fx:id="setting" fitHeight="63.0" fitWidth="81.0" layoutX="32.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
          <image>

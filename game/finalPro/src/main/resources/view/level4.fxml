@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="anchor" prefHeight="399.0" prefWidth="464.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Level4">
    <children>
       <ImageView fx:id="imageView" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
@@ -53,27 +52,27 @@
       <Button fx:id="tower5B" layoutX="94.0" layoutY="261.0" mnemonicParsing="false" onAction="#setTower5B" opacity="0.0" prefHeight="26.0" prefWidth="48.0" />
       <ImageView fx:id="ring1" fitHeight="105.0" fitWidth="92.0" layoutX="84.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Pictures/Saved%20Pictures/ring.png" />
+            <Image url="@../../../../../../Pictures/Saved%20Pictures/upgrade.png" />
          </image>
       </ImageView>
       <ImageView fx:id="ring2" fitHeight="105.0" fitWidth="92.0" layoutX="136.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Pictures/Saved%20Pictures/ring.png" />
+            <Image url="@../../../../../../Pictures/Saved%20Pictures/upgrade.png" />
          </image>
       </ImageView>
       <ImageView fx:id="ring3" fitHeight="105.0" fitWidth="92.0" layoutX="290.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Pictures/Saved%20Pictures/ring.png" />
+            <Image url="@../../../../../../Pictures/Saved%20Pictures/upgrade.png" />
          </image>
       </ImageView>
       <ImageView fx:id="ring4" fitHeight="105.0" fitWidth="92.0" layoutX="319.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Pictures/Saved%20Pictures/ring.png" />
+            <Image url="@../../../../../../Pictures/Saved%20Pictures/upgrade.png" />
          </image>
       </ImageView>
       <ImageView fx:id="ring5" fitHeight="105.0" fitWidth="92.0" layoutX="72.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Pictures/Saved%20Pictures/ring.png" />
+            <Image url="@../../../../../../Pictures/Saved%20Pictures/upgrade.png" />
          </image>
       </ImageView>
       <ImageView fx:id="board" fitHeight="94.0" fitWidth="130.0" layoutX="-22.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
@@ -122,5 +121,24 @@
          </image>
       </ImageView>
       <Button fx:id="attackB" layoutX="401.0" layoutY="27.0" mnemonicParsing="false" onAction="#click" opacity="0.0" prefHeight="26.0" prefWidth="40.0" />
+      <ImageView fx:id="backPack" fitHeight="200.0" fitWidth="48.0" layoutX="417.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Pictures/Saved%20Pictures/backpack.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="427.0" layoutY="210.0" mnemonicParsing="false" onAction="#buyCoin" opacity="0.0" prefHeight="26.0" prefWidth="28.0" text="Button" />
+      <Button layoutX="427.0" layoutY="183.0" mnemonicParsing="false" onAction="#buyHeal" opacity="0.0" prefHeight="26.0" prefWidth="28.0" text="Button" />
+      <Button layoutX="427.0" layoutY="145.0" mnemonicParsing="false" onAction="#buyLittle" opacity="0.0" prefHeight="26.0" prefWidth="28.0" text="Button" />
+      <Button layoutX="427.0" layoutY="119.0" mnemonicParsing="false" onAction="#buyFreeze" opacity="0.0" prefHeight="26.0" prefWidth="28.0" text="Button" />
+      <Button fx:id="upgradeT1" layoutX="116.0" layoutY="57.0" mnemonicParsing="false" onAction="#upgradeT1" opacity="0.0" prefHeight="26.0" prefWidth="28.0" />
+      <Button layoutX="119.0" layoutY="132.0" mnemonicParsing="false" onAction="#destroyT1" opacity="0.0" prefHeight="5.0" prefWidth="22.0" />
+      <Button fx:id="upgradeT11" layoutX="171.0" layoutY="148.0" mnemonicParsing="false" onAction="#upgradeT2" opacity="0.0" prefHeight="26.0" prefWidth="22.0" />
+      <Button layoutX="170.0" layoutY="228.0" mnemonicParsing="false" onAction="#destroyT2" opacity="0.0" prefHeight="0.0" prefWidth="22.0" />
+      <Button fx:id="upgradeT111" layoutX="324.0" layoutY="148.0" mnemonicParsing="false" onAction="#upgradeT3" opacity="0.0" prefHeight="26.0" prefWidth="22.0" />
+      <Button layoutX="324.0" layoutY="223.0" mnemonicParsing="false" onAction="#destroyT3" opacity="0.0" prefHeight="11.0" prefWidth="22.0" />
+      <Button layoutX="354.0" layoutY="329.0" mnemonicParsing="false" onAction="#destroyT4" opacity="0.0" prefHeight="11.0" prefWidth="22.0" />
+      <Button fx:id="upgradeT1111" layoutX="354.0" layoutY="261.0" mnemonicParsing="false" onAction="#upgradeT4" opacity="0.0" prefHeight="26.0" prefWidth="22.0" />
+      <Button fx:id="upgradeT11111" layoutX="105.0" layoutY="233.0" mnemonicParsing="false" onAction="#upgradeT5" opacity="0.0" prefHeight="26.0" prefWidth="22.0" />
+      <Button layoutX="105.0" layoutY="307.0" mnemonicParsing="false" onAction="#destroyT5" opacity="0.0" prefHeight="11.0" prefWidth="22.0" />
    </children>
 </AnchorPane>

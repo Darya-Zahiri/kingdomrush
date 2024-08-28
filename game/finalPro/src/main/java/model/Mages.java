@@ -4,7 +4,7 @@ import javafx.scene.image.Image;
 
 public class Mages extends Tower{
     public Mages() {
-        super(20, 80, 100);
+        super(2, 80, 100);
     }
     private Image imag=new Image("C:\\Users\\zam zam\\Pictures\\Saved Pictures\\mage.png");
 

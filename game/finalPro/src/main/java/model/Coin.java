@@ -5,15 +5,14 @@ public interface Coin extends Spell {
         return 850;
     }
 
-    @Override
-    public default void dropMap(Map level) {
+
+    public static void dropMap(Map level) {
         int coin=level.getCoin();
         coin+=200;
         level.setCoin(coin);
     }
 
-    @Override
-    public default void dropWave(Wave currentWave) {
+    public static void dropWave(Wave currentWave) {
 
     }
 }

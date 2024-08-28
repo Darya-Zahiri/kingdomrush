@@ -120,7 +120,7 @@ public class Player {
         newPlayer.setUsername(username);
         newPlayer.setPassword(password);
 
-            Session.database.executeQueryWithoutResult("insert into player (username,password,level,diamond) values('" + newPlayer.getUsername() + "','" + newPlayer.getPassword() + "',1,0);");
+            Session.database.executeQueryWithoutResult("insert into player (username,password,level,diamond,coinSpell,healSpell,littleSpell,freezeSpell) values('" + newPlayer.getUsername() + "','" + newPlayer.getPassword() + "',1,0,0,0,0,0);");
             try {
                 ResultSet resultSet = Session.database.executeQueryWithResult("select id from player where username='" + newPlayer.getUsername() + "';");
                 if (resultSet.next()) {

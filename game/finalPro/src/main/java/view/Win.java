@@ -37,6 +37,11 @@ public class Win {
         imageView.setImage(win);
     }
     public void gohome(ActionEvent event) throws IOException {
+        /*root = FXMLLoader.load(getClass().getResource("/view/home.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();*/
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }

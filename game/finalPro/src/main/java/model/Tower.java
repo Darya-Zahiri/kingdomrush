@@ -103,7 +103,7 @@ public class Tower {
         }
         if (distance<radius) {
             int health=wave.raiders.get(number).getHealth();
-            health--;
+            health-=power;
             if (health!=0) {
                 Platform.runLater(() -> {
                     closestRaider.getImageView().setImage(explode);
@@ -123,6 +123,21 @@ public class Tower {
 
             }
         }
+    }
+    public void upgrade(Map level){
+        if (level.getCoin()>110){
+            radius+=30;
+            int coin=level.getCoin();
+            coin-=110;
+            level.setCoin(coin);
+        }
+    }
+    public void destroy(Map level){
+        power=0;
+        int coin=level.getCoin();
+        coin+=(cost/2);
+        level.setCoin(coin);
+
     }
 
 }

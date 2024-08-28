@@ -5,6 +5,11 @@ public interface Spell {
         return 0;
     }
 
-    void dropMap(Map level);
-    void dropWave(Wave currentWave);
+    static void dropMap(Map level) {
+
+    }
+
+    static void dropWave(Wave currentWave) {
+
+    }
 }

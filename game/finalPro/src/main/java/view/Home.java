@@ -136,7 +136,26 @@ public class Home {
         stage.setScene(scene);
         stage.show();
     }
-    public void setLevel2(ActionEvent event){
+    public void setLevel2(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/view/level2.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void setLevel3(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/view/level3.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void setLevel4(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/view/level4.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
     public void setBackB(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/view/signin.fxml"));

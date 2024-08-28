@@ -5,17 +5,17 @@ public interface LittleBoy extends Spell {
         return 50;
     }
 
-    @Override
-    public default void dropMap(Map level) {
+
+    public static void dropMap(Map level) {
 
     }
 
-    @Override
-    public default void dropWave(Wave currentWave) {
+
+    public static void dropWave(Wave currentWave) {
         for (int j=0;j<currentWave.raiders.size();j++){
             if (currentWave.raiders.get(j).getImageView().getOpacity()!=0){
-                currentWave.raiders.get(j).status=false;
-                currentWave.raiders.get(j).getImageView().setOpacity(0);
+                currentWave.raiders.get(j).setHealth(0);
+
             }
         }
     }

@@ -5,15 +5,15 @@ public interface Heal extends Spell {
         return 350;
     }
 
-    @Override
-    public default void dropMap(Map level) {
+
+    public static void dropMap(Map level) {
         int health= level.getLife();
         health+=5;
         level.setLife(health);
     }
 
-    @Override
-    public default void dropWave(Wave currentWave) {
+
+    public static void dropWave(Wave currentWave) {
 
     }
 }

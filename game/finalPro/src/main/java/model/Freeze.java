@@ -5,8 +5,8 @@ public interface Freeze extends Spell {
         return 250;
     }
 
-    @Override
-    public default void dropMap(Map level) {
+
+    public static void dropMap(Map level) {
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
@@ -14,8 +14,8 @@ public interface Freeze extends Spell {
         }
     }
 
-    @Override
-    public default void dropWave(Wave currentWave) {
+
+    public static void dropWave(Wave currentWave) {
 
     }
 }

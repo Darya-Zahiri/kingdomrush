@@ -7,7 +7,7 @@ public class Archer extends Tower {
     //یک مهاجم را �ی تواند هدف قرار دهد. قدرت تخریب آن برای مهاجمهای سپردار
     //نصف محاسبه �یشود.
     public Archer() {
-        super(20, 70, 80);
+        super(1, 70, 80);
     }
     private Image imag=new Image("C:\\Users\\zam zam\\Pictures\\Saved Pictures\\archer.png");
 

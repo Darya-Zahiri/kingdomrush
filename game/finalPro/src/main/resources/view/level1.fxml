@@ -50,17 +50,17 @@
       <Button fx:id="tower3B" layoutX="95.0" layoutY="326.0" mnemonicParsing="false" onAction="#setTower3B" opacity="0.0" prefHeight="26.0" prefWidth="48.0" />
       <ImageView fx:id="ring1" fitHeight="105.0" fitWidth="92.0" layoutX="144.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Pictures/Saved%20Pictures/ring.png" />
+            <Image url="@../../../../../../Pictures/Saved%20Pictures/upgrade.png" />
          </image>
       </ImageView>
       <ImageView fx:id="ring3" fitHeight="105.0" fitWidth="92.0" layoutX="77.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Pictures/Saved%20Pictures/ring.png" />
+            <Image url="@../../../../../../Pictures/Saved%20Pictures/upgrade.png" />
          </image>
       </ImageView>
       <ImageView fx:id="ring2" fitHeight="105.0" fitWidth="92.0" layoutX="213.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Pictures/Saved%20Pictures/ring.png" />
+            <Image url="@../../../../../../Pictures/Saved%20Pictures/upgrade.png" />
          </image>
       </ImageView>
       <Button fx:id="archer1B" layoutX="144.0" layoutY="48.0" mnemonicParsing="false" onAction="#setArcher1B" opacity="0.0" prefHeight="17.0" prefWidth="28.0" />
@@ -99,5 +99,20 @@
       <Label fx:id="tower3L" layoutX="40.0" layoutY="317.0" />
       <Label fx:id="tower2L" layoutX="308.0" layoutY="252.0" />
       <Label fx:id="tower1L" layoutX="109.0" layoutY="87.0" />
+      <ImageView fx:id="backPack" fitHeight="200.0" fitWidth="48.0" layoutX="407.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Pictures/Saved%20Pictures/backpack.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="417.0" layoutY="200.0" mnemonicParsing="false" onAction="#buyCoin" opacity="0.0" prefHeight="26.0" prefWidth="28.0" text="Button" />
+      <Button layoutX="417.0" layoutY="173.0" mnemonicParsing="false" onAction="#buyHeal" opacity="0.0" prefHeight="26.0" prefWidth="28.0" text="Button" />
+      <Button layoutX="417.0" layoutY="135.0" mnemonicParsing="false" onAction="#buyLittle" opacity="0.0" prefHeight="26.0" prefWidth="28.0" text="Button" />
+      <Button layoutX="417.0" layoutY="109.0" mnemonicParsing="false" onAction="#buyFreeze" opacity="0.0" prefHeight="26.0" prefWidth="28.0" text="Button" />
+      <Button fx:id="upgradeT1" layoutX="178.0" layoutY="48.0" mnemonicParsing="false" onAction="#upgradeT1" opacity="0.0" prefHeight="26.0" prefWidth="15.0" />
+      <Button layoutX="177.0" layoutY="123.0" mnemonicParsing="false" onAction="#destroyT1" opacity="0.0" prefHeight="26.0" prefWidth="22.0" />
+      <Button fx:id="upgradeT11" layoutX="245.0" layoutY="213.0" mnemonicParsing="false" onAction="#upgradeT2" opacity="0.0" prefHeight="26.0" prefWidth="22.0" />
+      <Button layoutX="248.0" layoutY="291.0" mnemonicParsing="false" onAction="#destroyT2" opacity="0.0" prefHeight="11.0" prefWidth="22.0" />
+      <Button fx:id="upgradeT111" layoutX="112.0" layoutY="292.0" mnemonicParsing="false" onAction="#upgradeT3" opacity="0.0" prefHeight="26.0" prefWidth="22.0" />
+      <Button layoutX="112.0" layoutY="368.0" mnemonicParsing="false" onAction="#destroyT3" opacity="0.0" prefHeight="11.0" prefWidth="22.0" />
    </children>
 </AnchorPane>

@@ -27,6 +27,7 @@ import javafx.util.Duration;
 import model.*;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Level1 implements Runnable{
@@ -72,6 +73,8 @@ public class Level1 implements Runnable{
     @FXML
     private ImageView ring3;
     @FXML
+    private ImageView backPack;
+    @FXML
     private Button button;
     @FXML
     private Button tower1B;
@@ -112,6 +115,7 @@ public class Level1 implements Runnable{
     private Image ringI=new Image("C:\\Users\\zam zam\\Pictures\\Saved Pictures\\ring.png");
     private Image upgrade=new Image("C:\\Users\\zam zam\\Pictures\\Saved Pictures\\upgrade.png");
     private Image attackI=new Image("C:\\Users\\zam zam\\Pictures\\Saved Pictures\\start1.png");
+    private Image backPackI=new Image("C:\\Users\\zam zam\\Pictures\\Saved Pictures\\backpack.png");
 
     Map level1=new Map(300,20,0);
     Wave currentWave=new Wave();
@@ -129,6 +133,7 @@ public class Level1 implements Runnable{
         tower3.setImage(towerI);
         home.setImage(homeI);
         imageView.setImage(map1);
+        backPack.setImage(backPackI);
         Thread thread = new Thread(this);
         thread.start();
     }
@@ -220,6 +225,27 @@ public class Level1 implements Runnable{
             ring3.setOpacity(1);
             //ring1.setLayoutY(40);
         }
+    }
+    public void upgradeT1(){
+            towers.get(0).upgrade(level1);
+    }
+    public void destroyT1(){
+        towers.get(0).destroy(level1);
+        tower1.setImage(towerI);
+    }
+    public void upgradeT2(){
+        towers.get(1).upgrade(level1);
+    }
+    public void destroyT2(){
+        towers.get(1).destroy(level1);
+        tower1.setImage(towerI);
+    }
+    public void upgradeT3(){
+        towers.get(2).upgrade(level1);
+    }
+    public void destroyT3(){
+        towers.get(2).destroy(level1);
+        tower1.setImage(towerI);
     }
     public void setArcher1B(){
         disable();
@@ -551,6 +577,34 @@ public class Level1 implements Runnable{
                 });
             }
          }
+        }
+    }
+    public void buyCoin() throws SQLException {
+        if (Player.getPlayer().coinSpell>0){
+            Coin.dropMap(level1);
+            Player.getPlayer().coinSpell--;
+            int result= Session.database.executeQueryWithoutResult("UPDATE player SET  coinSpell = '" +Player.getPlayer().coinSpell+ "'  WHERE id = " +Player.getPlayer().getId()+ ";");
+        }
+    }
+    public void buyHeal() throws SQLException {
+        if (Player.getPlayer().healSpell>0){
+            Heal.dropMap(level1);
+            Player.getPlayer().healSpell--;
+            int result= Session.database.executeQueryWithoutResult("UPDATE player SET  healSpell = '" +Player.getPlayer().healSpell+ "'  WHERE id = " +Player.getPlayer().getId()+ ";");
+        }
+    }
+    public void buyLittle() throws SQLException {
+        if (Player.getPlayer().littleSpell>0){
+            LittleBoy.dropWave(currentWave);
+            Player.getPlayer().littleSpell--;
+            int result= Session.database.executeQueryWithoutResult("UPDATE player SET  littleSpell = '" +Player.getPlayer().littleSpell+ "'  WHERE id = " +Player.getPlayer().getId()+ ";");
+        }
+    }
+    public void buyFreeze() throws SQLException {
+        if (Player.getPlayer().freezeSpell>0){
+            Freeze.dropMap(level1);
+            Player.getPlayer().freezeSpell--;
+            int result= Session.database.executeQueryWithoutResult("UPDATE player SET  freezeSpell = '" +Player.getPlayer().freezeSpell+ "'  WHERE id = " +Player.getPlayer().getId()+ ";");
         }
     }
 }

@@ -2,6 +2,10 @@ package model;
 
 import javafx.application.Platform;
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
+import java.io.File;
 
 public class Tower {
     private int power;
@@ -83,12 +87,18 @@ public class Tower {
         return answer;
     }
     public void shut(Wave wave){
+
         double distance=closeRaider(wave);
+
+
+        System.out.println(distance);
         int number = 0;
         for(int i=0;i<wave.raiders.size();i++){
             if(wave.raiders.get(i).equals(closestRaider)){
+
                 number=i;
                 break;
+
             }
         }
         if (distance<radius) {
@@ -100,12 +110,17 @@ public class Tower {
                 });
 
                 wave.raiders.get(number).setHealth(health);
+                String shoot="C:\\Users\\zam zam\\Downloads\\Rifle-Shooting.mp3";
+                Media sound = new Media(new File(shoot).toURI().toString());
+                MediaPlayer mediaPlayer = new MediaPlayer(sound);
+                mediaPlayer.play();
             }else {
                 Platform.runLater(() -> {
                     closestRaider.getImageView().setImage(dead);
                 });
 
                 wave.raiders.get(number).setHealth(health);
+
             }
         }
     }

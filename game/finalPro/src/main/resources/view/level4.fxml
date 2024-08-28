@@ -1,14 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="view.Level4"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane fx:id="anchor" prefHeight="399.0" prefWidth="464.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Level4">
+   <children>
+      <ImageView fx:id="imageView" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Pictures/Saved%20Pictures/map3.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="home" fitHeight="51.0" fitWidth="51.0" layoutX="23.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Pictures/Saved%20Pictures/home.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="homeB" layoutX="23.0" layoutY="350.0" mnemonicParsing="false" onAction="#setHomeB" opacity="0.0" prefHeight="34.0" prefWidth="40.0" />
+      <ImageView fx:id="tower1" fitHeight="68.0" fitWidth="98.0" layoutX="84.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Pictures/Saved%20Pictures/towerplace.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="tower2" fitHeight="68.0" fitWidth="129.0" layoutX="133.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Pictures/Saved%20Pictures/towerplace.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="tower3" fitHeight="68.0" fitWidth="129.0" layoutX="287.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Pictures/Saved%20Pictures/towerplace.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="tower4" fitHeight="68.0" fitWidth="129.0" layoutX="316.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Pictures/Saved%20Pictures/towerplace.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="tower5" fitHeight="68.0" fitWidth="129.0" layoutX="69.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Pictures/Saved%20Pictures/towerplace.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="tower1B" layoutX="109.0" layoutY="89.0" mnemonicParsing="false" onAction="#setTower1B" opacity="0.0" prefHeight="26.0" prefWidth="48.0" />
+      <Button fx:id="tower2B" layoutX="162.0" layoutY="187.0" mnemonicParsing="false" onAction="#setTower2B" opacity="0.0" prefHeight="26.0" prefWidth="40.0" />
+      <Button fx:id="tower3B" layoutX="312.0" layoutY="178.0" mnemonicParsing="false" onAction="#setTower3B" opacity="0.0" prefHeight="26.0" prefWidth="48.0" />
+      <Button fx:id="tower4B" layoutX="341.0" layoutY="285.0" mnemonicParsing="false" onAction="#setTower4B" opacity="0.0" prefHeight="26.0" prefWidth="48.0" />
+      <Button fx:id="tower5B" layoutX="94.0" layoutY="261.0" mnemonicParsing="false" onAction="#setTower5B" opacity="0.0" prefHeight="26.0" prefWidth="48.0" />
+      <ImageView fx:id="ring1" fitHeight="105.0" fitWidth="92.0" layoutX="84.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Pictures/Saved%20Pictures/ring.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ring2" fitHeight="105.0" fitWidth="92.0" layoutX="136.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Pictures/Saved%20Pictures/ring.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ring3" fitHeight="105.0" fitWidth="92.0" layoutX="290.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Pictures/Saved%20Pictures/ring.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ring4" fitHeight="105.0" fitWidth="92.0" layoutX="319.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Pictures/Saved%20Pictures/ring.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ring5" fitHeight="105.0" fitWidth="92.0" layoutX="72.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Pictures/Saved%20Pictures/ring.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="board" fitHeight="94.0" fitWidth="130.0" layoutX="-22.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Pictures/Saved%20Pictures/board.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="life" layoutX="15.0" layoutY="4.0" prefHeight="26.0" prefWidth="15.0" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="coin" layoutX="55.0" layoutY="8.0" prefHeight="18.0" prefWidth="28.0" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="wave" layoutX="49.0" layoutY="21.0" prefHeight="10.0" prefWidth="39.0" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button fx:id="archer1B" layoutX="84.0" layoutY="56.0" mnemonicParsing="false" onAction="#setArcher1B" opacity="0.0" prefHeight="17.0" prefWidth="28.0" />
+      <Button fx:id="barracks1B" layoutX="148.0" layoutY="56.0" mnemonicParsing="false" onAction="#setBarracks1B" opacity="0.0" prefHeight="26.0" prefWidth="28.0" />
+      <Button fx:id="artillery1B" layoutX="148.0" layoutY="115.0" mnemonicParsing="false" onAction="#setArtillery1B" opacity="0.0" prefHeight="26.0" prefWidth="28.0" />
+      <Button fx:id="mages1B" layoutX="84.0" layoutY="115.0" mnemonicParsing="false" onAction="#setMages1B" opacity="0.0" prefHeight="26.0" prefWidth="28.0" />
+      <Button fx:id="artillery2B" layoutX="200.0" layoutY="200.0" mnemonicParsing="false" onAction="#setArtillery2B" opacity="0.0" prefHeight="26.0" prefWidth="28.0" />
+      <Button fx:id="mages2B" layoutX="143.0" layoutY="200.0" mnemonicParsing="false" onAction="#setMages2B" opacity="0.0" prefHeight="26.0" prefWidth="28.0" />
+      <Button fx:id="barracks2B" layoutX="200.0" layoutY="144.0" mnemonicParsing="false" onAction="#setBarracks2B" opacity="0.0" prefHeight="26.0" prefWidth="28.0" />
+      <Button fx:id="archer2B" layoutX="143.0" layoutY="148.0" mnemonicParsing="false" onAction="#setArcher2B" opacity="0.0" prefHeight="26.0" prefWidth="28.0" />
+      <Button fx:id="artillery3B" layoutX="351.0" layoutY="200.0" mnemonicParsing="false" onAction="#setArtillery3B" opacity="0.0" prefHeight="26.0" prefWidth="28.0" />
+      <Button fx:id="mages3B" layoutX="290.0" layoutY="200.0" mnemonicParsing="false" onAction="#setMages3B" opacity="0.0" prefHeight="26.0" prefWidth="28.0" />
+      <Button fx:id="barracks3B" layoutX="351.0" layoutY="148.0" mnemonicParsing="false" onAction="#setBarracks3B" opacity="0.0" prefHeight="26.0" prefWidth="28.0" />
+      <Button fx:id="archer3B" layoutX="290.0" layoutY="148.0" mnemonicParsing="false" onAction="#setArcher3B" opacity="0.0" prefHeight="26.0" prefWidth="28.0" />
+      <Button fx:id="archer4B" layoutX="322.0" layoutY="250.0" mnemonicParsing="false" onAction="#setArcher4B" opacity="0.0" prefHeight="26.0" prefWidth="28.0" />
+      <Button fx:id="barracks4B" layoutX="382.0" layoutY="251.0" mnemonicParsing="false" onAction="#setBarracks4B" opacity="0.0" prefHeight="26.0" prefWidth="28.0" />
+      <Button fx:id="mages4B" layoutX="322.0" layoutY="307.0" mnemonicParsing="false" onAction="#setMages4B" opacity="0.0" prefHeight="26.0" prefWidth="28.0" />
+      <Button fx:id="artillery4B" layoutX="382.0" layoutY="307.0" mnemonicParsing="false" onAction="#setArtillery4B" opacity="0.0" prefHeight="26.0" prefWidth="28.0" />
+      <Button fx:id="archer5B" layoutX="70.0" layoutY="228.0" mnemonicParsing="false" onAction="#setArcher5B" opacity="0.0" prefHeight="26.0" prefWidth="28.0" />
+      <Button fx:id="barracks5B" layoutX="134.0" layoutY="228.0" mnemonicParsing="false" onAction="#setBarracks5B" opacity="0.0" prefHeight="26.0" prefWidth="28.0" />
+      <Button fx:id="mages5B" layoutX="70.0" layoutY="285.0" mnemonicParsing="false" onAction="#setMages5B" opacity="0.0" prefHeight="26.0" prefWidth="28.0" />
+      <Button fx:id="artillery5B" layoutX="134.0" layoutY="285.0" mnemonicParsing="false" onAction="#setArtillery5B" opacity="0.0" prefHeight="26.0" prefWidth="28.0" />
+      <ImageView fx:id="attack" fitHeight="34.0" fitWidth="48.0" layoutX="402.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Pictures/Saved%20Pictures/start1.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="attackB" layoutX="401.0" layoutY="27.0" mnemonicParsing="false" onAction="#click" opacity="0.0" prefHeight="26.0" prefWidth="40.0" />
+   </children>
 </AnchorPane>

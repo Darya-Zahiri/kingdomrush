@@ -19,6 +19,8 @@ public abstract class Raider {
 
     private ImageView imageView;
 
+    public boolean status;
+
     private int x;
 
     private int y;
@@ -31,6 +33,7 @@ public abstract class Raider {
         this.image=image;
         this.label=new Label("");
         this.imageView=new ImageView(image);
+        status=true;
     }
 
     public int getHealth() {

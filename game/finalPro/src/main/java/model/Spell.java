@@ -1,6 +1,10 @@
 package model;
 
 public interface Spell {
-    int getPrice();
-    void drop();
+    static int getPrice() {
+        return 0;
+    }
+
+    void dropMap(Map level);
+    void dropWave(Wave currentWave);
 }

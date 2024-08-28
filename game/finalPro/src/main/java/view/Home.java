@@ -7,11 +7,15 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import model.Player;
 
+import java.io.File;
 import java.io.IOException;
 
 public class Home {
@@ -52,13 +56,36 @@ public class Home {
     private ImageView back;
     @FXML
     private Button backB;
+    @FXML
+    private ImageView shop;
+    @FXML
+    private ImageView diamond;
+    @FXML
+    private ImageView wood1;
+    @FXML
+    private ImageView wood2;
+    @FXML
+    private Label diamondL;
     private Image map=new Image("C:\\Users\\zam zam\\Pictures\\Saved Pictures\\kingdom_rush_1072_premium_5.jpg");
     private Image sheild=new Image("C:\\Users\\zam zam\\Pictures\\Saved Pictures\\newq2.png");
     private Image star=new Image("C:\\Users\\zam zam\\Pictures\\Saved Pictures\\star.png");
     private Image settings=new Image("C:\\Users\\zam zam\\Pictures\\Saved Pictures\\settingend.png");
     private Image backI=new Image("C:\\Users\\zam zam\\Pictures\\Saved Pictures\\back.png");
+    private Image diamondI=new Image("C:\\Users\\zam zam\\Pictures\\Saved Pictures\\diamond.png");
+    private Image shopI=new Image("C:\\Users\\zam zam\\Pictures\\Saved Pictures\\shop.png");
+    private Image wood=new Image("C:\\Users\\zam zam\\Pictures\\Saved Pictures\\pngtree-wooden-panel-for-game-ui-in-cartoon-style-png-image_9560501.png");
 
     public void initialize(){
+        if (Player.getPlayer().audio){
+            Player.getPlayer().mediaPlayer.play();
+        }else {
+            Player.getPlayer().mediaPlayer.pause();
+        }
+        wood1.setImage(wood);
+        wood2.setImage(wood);
+        diamondL.setText(String.valueOf(Player.getPlayer().getDiamond()));
+        diamond.setImage(diamondI);
+        shop.setImage(shopI);
         back.setImage(backI);
         page.setImage(map);
         sheild1.setImage(sheild);
@@ -113,6 +140,13 @@ public class Home {
     }
     public void setBackB(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/view/signin.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void setShop(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/view/shop.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

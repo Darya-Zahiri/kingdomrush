@@ -53,7 +53,7 @@ public class Setting {
     public void initialize(){
         page.setImage(pageI);
         home.setImage(homeI);
-        if (Session.voiceOn.equals(true)){
+        if (Player.getPlayer().audio){
             voice.setImage(voiceOnI);
         }else {
             voice.setImage(voiceOffI);
@@ -69,11 +69,13 @@ public class Setting {
         stage.show();
     }
     public void setVoiceB(ActionEvent event){
-        if (Session.voiceOn.equals(true)){
-            Session.voiceOn=false;
+        if (Player.getPlayer().audio){
+            Player.getPlayer().mediaPlayer.pause();
+            Player.getPlayer().audio=false;
             voice.setImage(voiceOffI);
         }else {
-            Session.voiceOn=true;
+            Player.getPlayer().audio=true;
+            Player.getPlayer().mediaPlayer.play();
             voice.setImage(voiceOnI);
         }
     }

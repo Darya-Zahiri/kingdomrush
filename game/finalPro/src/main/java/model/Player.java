@@ -1,5 +1,9 @@
 package model;
 
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
+import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -18,12 +22,23 @@ public class Player {
 
     public static boolean status=false;
 
+    public boolean audio=true;
+
+    public String musicFile = "C:\\Users\\zam zam\\Downloads\\clash_of_clans_combat_music.mp3";     // For example
+
+    public Media sound = new Media(new File(musicFile).toURI().toString());
+    public MediaPlayer mediaPlayer = new MediaPlayer(sound);
+
     //backpack
 
 
     private Player() {
         this.level=1;
         this.diamond=0;
+        this.healSpell=0;
+        this.coinSpell=0;
+        this.freezeSpell=0;
+        this.littleSpell=0;
     }
 
     public static Player getPlayer() {
@@ -74,6 +89,11 @@ public class Player {
         this.diamond = diamond;
     }
 
+    public int coinSpell;
+    public int healSpell;
+    public int freezeSpell;
+    public int littleSpell;
+
     public String signIn(String username,String password) throws SQLException {
         Player newPlayer=new Player();
         newPlayer.setUsername(username);
@@ -84,6 +104,10 @@ public class Player {
             player.setId(resultSet.getInt("id"));
             player.setDiamond(Integer.parseInt(resultSet.getString("diamond")));
             player.setLevel(Integer.parseInt(resultSet.getString("level")));
+            player.coinSpell=(Integer.parseInt(resultSet.getString("coinSpell")));
+            player.healSpell=(Integer.parseInt(resultSet.getString("healSpell")));
+            player.littleSpell=(Integer.parseInt(resultSet.getString("littleSpell")));
+            player.freezeSpell=(Integer.parseInt(resultSet.getString("freezeSpell")));
             return ("user found");
         }else {
             return ("user not found!!!");

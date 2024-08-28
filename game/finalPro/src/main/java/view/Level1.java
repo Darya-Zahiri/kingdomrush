@@ -1,8 +1,10 @@
 package view;
 
+import controller.HelloApplication;
 import javafx.animation.PathTransition;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,6 +33,7 @@ public class Level1 implements Runnable{
     Stage stage;
     Scene scene;
     Parent root;
+    Boolean live=true;
     public ArrayList<Tower> towers=new ArrayList<>();
     @FXML
     private AnchorPane anchor;
@@ -115,9 +118,6 @@ public class Level1 implements Runnable{
     public int waveCount=0;
 
     public void initialize(){
-        life.setText(String.valueOf(level1.getLife()));
-        coin.setText(String.valueOf(level1.getCoin()));
-        wave.setText("0/4");
         attack.setImage(attackI);
         disable();
         ring1.setImage(ringI);
@@ -400,7 +400,6 @@ public class Level1 implements Runnable{
         artillery2B.setDisable(true);
         artillery3B.setDisable(true);
 
-        //ring image
         ring1.setOpacity(0);
         ring1.setDisable(true);
         ring2.setOpacity(0);
@@ -409,10 +408,8 @@ public class Level1 implements Runnable{
         ring3.setDisable(true);
     }
     public void move(Raider raider){
-
         anchor.getChildren().addAll(raider.getImageView());
         anchor.getChildren().addAll(raider.getLabel());
-        //raider.getLabel()
         raider.getImageView().setScaleX(0.2);
         raider.getImageView().setScaleY(0.2);
         raider.getImageView().setLayoutX(240);
@@ -427,77 +424,133 @@ public class Level1 implements Runnable{
         path.getElements().add(new CubicCurveTo(-250,160,-120,240,-140,230));
         path.getElements().add(new CubicCurveTo(15,245,20,240,35,320));
 
-        Path pathLable=new Path();
-        pathLable.getElements().add(new MoveTo(0,0));
-        pathLable.getElements().add(new CubicCurveTo(15,105,-20,130,-30,130));
-        pathLable.getElements().add(new CubicCurveTo(-250,140,-120,220,-140,210));
-        pathLable.getElements().add(new CubicCurveTo(15,225,20,220,35,300));
-
         PathTransition pathT=new PathTransition();
         pathT.setDuration(Duration.millis(30000));
         pathT.setPath(path);
-
-        PathTransition pathT2=new PathTransition();
-        pathT2.setDuration(Duration.millis(30000));
-        pathT2.setPath(pathLable);
-
         pathT.setNode(raider.getImageView());
         pathT.setCycleCount(1);
         pathT.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
         pathT.play();
-
-        pathT2.setNode(raider.getLabel());
-        pathT2.setCycleCount(1);
-        pathT2.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
-        pathT2.play();
-
     }
 
     @Override
     public void run() {
-        int i=0;
-        while(i<1000){
-
-
-            checkBoard();
-
-           /* Platform.runLater(()->{
-                currentWave.raiders.forEach(entry -> {
-                    if (entry.getHealth()==0){
-                        entry.getImageView().setImage(null);
-                        currentWave.raiders.remove(entry);
-                    }else{
-                        entry.getImageView().setImage(entry.getImage());
-
-                    }
-                });
-            });*/
+        while(live){
            try{
-
-               towers.forEach(entry -> {
-                    entry.shut(currentWave);
-               });
-
-
+               checklife();
+               checkWin();
                Platform.runLater(()->{
+                   settingImage();
+                   checkBoard();
+                   towers.forEach(entry -> {
+                       if (!currentWave.raiders.isEmpty()){
+                           entry.shut(currentWave);}
+                   });
                    currentWave.raiders.forEach(entry -> {
                        entry.setX((int)(entry.getImageView().getLayoutX()+entry.getImageView().getTranslateX()+50));
                        entry.setY((int) (entry.getImageView().getLayoutY()+entry.getImageView().getTranslateY()+50));
-
-                       //entry.getLabel().setText("x="+String.valueOf(Math.round(entry.getImageView().getLayoutX()+entry.getImageView().getTranslateX()))+"\ny="+String.valueOf((Math.round(entry.getImageView().getLayoutY()+entry.getImageView().getTranslateY()))));
                    });
                });
                Thread.sleep(1000);
-               i++;
            }catch (Exception e){
-
-               i=10;
+               live=false;
            }
         }
     }
+    public void settingImage(){
+        Platform.runLater(()->{
+            for (int j=0;j<currentWave.raiders.size();j++){
+                if (currentWave.raiders.get(j).getHealth()==0){
+                    if (currentWave.raiders.get(j).getImageView().getOpacity()!=0){
+                        int cost=level1.getCoin();
+                        cost+=currentWave.raiders.get(j).getLoot();
+                        level1.setCoin(cost);
+                        currentWave.raiders.get(j).status=false;
+                        currentWave.raiders.get(j).getImageView().setOpacity(0);
+                    }else {
+                    }
+                }else{
+                    currentWave.raiders.get(j).getImageView().setImage(currentWave.raiders.get(j).getImage());
+
+                }
+            }
+        });
+    }
     public void checkBoard(){
-        life.setText(String.valueOf(level1.getLife()));
-        coin.setText(String.valueOf(level1.getCoin()));
-        wave.setText(String.valueOf(level1.getWave()+"/4"));
+        checkend();
+        Platform.runLater(()->{
+            life.setText(String.valueOf(level1.getLife()));
+            coin.setText(String.valueOf(level1.getCoin()));
+            wave.setText(level1.getWave()+"/4");
+        });
+    }
+    public void checkend(){
+        for (int j=0;j<currentWave.raiders.size();j++){
+            if (currentWave.raiders.get(j).getImageView().getTranslateX()==-15.0){
+                if (currentWave.raiders.get(j).getImageView().getTranslateY()==270.0) {
+                    if (currentWave.raiders.get(j).status){
+                        int life=level1.getLife();
+                        life--;
+                        level1.setLife(life);
+                        currentWave.raiders.get(j).status=false;
+                    }
+                }
+            }
+        }
+    }
+    public void checklife()  {
+       if (level1.getLife()==0){
+
+                live = false;
+                Platform.runLater(()->{
+                    try {
+                Parent root = FXMLLoader.load(HelloApplication.class.getResource("/view/lose.fxml"));
+                Stage stage = new Stage();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.setAlwaysOnTop(true);
+                stage.show();
+                    }catch (Exception e){
+                        System.out.println("error");
+                    }
+                });
+
+        }
+    }
+
+    public void checkWin(){
+        boolean check=false;
+        if (level1.getLife()!=0){
+            if (waveCount==4){
+            for (int j=0;j<currentWave.raiders.size();j++){
+                if (currentWave.raiders.get(j).getImageView().getTranslateX()==-15.0){
+                    if (currentWave.raiders.get(j).getImageView().getTranslateY()==270.0) {
+                        check=true;
+                    }else {
+                        check=false;
+                        break;
+                    }
+                }else {
+                    check=false;
+                    break;
+                }
+            }
+            if (check){
+                live = false;
+                Platform.runLater(()->{
+                    try {
+                        Parent root = FXMLLoader.load(HelloApplication.class.getResource("/view/win.fxml"));
+                        Stage stage = new Stage();
+                        Scene scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.setAlwaysOnTop(true);
+                        stage.show();
+                    }catch (Exception e){
+                        System.out.println("error");
+                    }
+                });
+            }
+         }
+        }
     }
 }

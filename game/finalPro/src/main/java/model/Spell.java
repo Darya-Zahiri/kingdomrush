@@ -1,4 +1,6 @@
 package model;
 
-public class Spell {
+public interface Spell {
+    int getPrice();
+    void drop();
 }

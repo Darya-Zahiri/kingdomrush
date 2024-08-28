@@ -72,29 +72,30 @@ public class Player {
         this.diamond = diamond;
     }
 
-    public void signIn(String username,String password) throws SQLException {
+    public String signIn(String username,String password) throws SQLException {
         Player newPlayer=new Player();
         newPlayer.setUsername(username);
         newPlayer.setPassword(password);
         ResultSet resultSet= Session.database.executeQueryWithResult("select * from player where username='"+newPlayer.getUsername()+"' and password='"+newPlayer.getPassword()+"';");
         if(resultSet.next()) {
-            System.out.println("userfound");
             player=newPlayer;
             player.setDiamond(Integer.parseInt(resultSet.getString("diamond")));
             player.setLevel(Integer.parseInt(resultSet.getString("level")));
+            return ("user found");
         }else {
-            System.out.println("usernotfound");
+            return ("user not found!!!");
         }
     }
-    public void signup(String username,String password) throws SQLException {
+    public String signup(String username,String password) throws SQLException {
         Player newPlayer=new Player();
         newPlayer.setUsername(username);
         newPlayer.setPassword(password);
         int result = Session.database.executeQueryWithoutResult("insert into player (username,password,level,diamond) values('" + newPlayer.getUsername() + "','" + newPlayer.getPassword() + "',1,0);");
         if (result == 1) {
             player = newPlayer;
+            return ("welome to kingdomrush");
         } else {
-
+            return ("error!!!");
         }
     }
 }

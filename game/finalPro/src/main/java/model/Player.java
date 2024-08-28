@@ -16,6 +16,8 @@ public class Player {
 
     private static Player player=new Player();
 
+    public static boolean status=false;
+
     //backpack
 
 
@@ -79,6 +81,7 @@ public class Player {
         ResultSet resultSet= Session.database.executeQueryWithResult("select * from player where username='"+newPlayer.getUsername()+"' and password='"+newPlayer.getPassword()+"';");
         if(resultSet.next()) {
             player=newPlayer;
+            player.setId(resultSet.getInt("id"));
             player.setDiamond(Integer.parseInt(resultSet.getString("diamond")));
             player.setLevel(Integer.parseInt(resultSet.getString("level")));
             return ("user found");
@@ -86,16 +89,30 @@ public class Player {
             return ("user not found!!!");
         }
     }
-    public String signup(String username,String password) throws SQLException {
+    public String signup(String username,String password) {
+        status=false;
+        try {
         Player newPlayer=new Player();
         newPlayer.setUsername(username);
         newPlayer.setPassword(password);
-        int result = Session.database.executeQueryWithoutResult("insert into player (username,password,level,diamond) values('" + newPlayer.getUsername() + "','" + newPlayer.getPassword() + "',1,0);");
-        if (result == 1) {
-            player = newPlayer;
-            return ("welome to kingdomrush");
-        } else {
-            return ("error!!!");
+
+            Session.database.executeQueryWithoutResult("insert into player (username,password,level,diamond) values('" + newPlayer.getUsername() + "','" + newPlayer.getPassword() + "',1,0);");
+            try {
+                ResultSet resultSet = Session.database.executeQueryWithResult("select id from player where username='" + newPlayer.getUsername() + "';");
+                if (resultSet.next()) {
+                    newPlayer.setId(resultSet.getInt("id"));
+                    status=true;
+                    return ("");
+                } else {
+                    return("signin error");
+                }
+            }catch (SQLException e){
+                return ("syntax error object didnt update");
+            }
+        }catch (SQLException e){
+            return ("username already taken!!!");
+        }catch (Exception e){
+            return (e.toString());
         }
     }
 }

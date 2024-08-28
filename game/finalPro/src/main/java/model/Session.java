@@ -5,6 +5,7 @@ import java.sql.SQLException;
 public class Session {
 
     public static Database database;
+    public static Boolean voiceOn=true;
 
     static {
         try {
@@ -18,4 +19,5 @@ public class Session {
 
     public Session() throws SQLException, ClassNotFoundException {
     }
+
 }

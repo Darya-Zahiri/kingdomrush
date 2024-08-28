@@ -24,6 +24,10 @@ public class Signup {
     Scene scene;
     Parent root;
     @FXML
+    private ImageView back;
+    @FXML
+    private Button backB;
+    @FXML
     private TextField username;
     @FXML
     private PasswordField password;
@@ -39,8 +43,10 @@ public class Signup {
     private Button signU;
     private Image image=new Image("C:\\Users\\zam zam\\Pictures\\Saved Pictures\\sign.jpg");
     private Image wood=new Image("C:\\Users\\zam zam\\Pictures\\Saved Pictures\\pngtree-wooden-panel-for-game-ui-in-cartoon-style-png-image_9560501.png");
+    private Image backI=new Image("C:\\Users\\zam zam\\Pictures\\Saved Pictures\\back.png");
 
     public void initialize(){
+        back.setImage(backI);
         imageView.setImage(image);
         signin.setImage(wood);
     }
@@ -70,19 +76,25 @@ public class Signup {
         return true;
     }
 
-    public void setSignUp(ActionEvent event) throws IOException, SQLException, InterruptedException {
+    public void setSignUp(ActionEvent event) throws IOException, InterruptedException {
         error.setText("");
         if (validateInput(username.getText(),password.getText(),repassword.getText())){
             error.setText(Player.getPlayer().signup(username.getText(),password.getText()));
         }
-        if (!error.getText().isEmpty()){
-            TimeUnit.SECONDS.sleep(2);
+        if (Player.status){
+            root = FXMLLoader.load(getClass().getResource("/view/signin.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+    }
+    public void setBackB(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/view/signin.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-        }
     }
 
 }

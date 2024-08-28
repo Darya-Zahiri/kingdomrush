@@ -5,6 +5,7 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -36,5 +37,11 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+      <ImageView fx:id="back" fitHeight="54.0" fitWidth="59.0" layoutX="9.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Pictures/Saved%20Pictures/back.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="backB" layoutX="13.0" layoutY="278.0" mnemonicParsing="false" onAction="#setBackB" opacity="0.0" prefHeight="42.0" prefWidth="37.0" />
    </children>
 </AnchorPane>
